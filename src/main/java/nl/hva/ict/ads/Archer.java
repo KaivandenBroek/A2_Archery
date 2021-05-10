@@ -82,6 +82,13 @@ public class Archer {
         return randomizer.nextInt(11);
     }
 
+    public static void toString(List<Archer> archers) {
+        for(int i = 0; i < archers.size(); i++)
+        System.out.print(archers.get(i).id + " ");
+         
+        System.out.println();
+    }
+
     /*
     The code below is for your own convenience. You don't have include it in your report.
      */

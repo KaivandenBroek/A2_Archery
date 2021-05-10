@@ -20,9 +20,8 @@ public class ChampionSelector {
         for (int i = 0; i < archers.size(); i++) {
             int currentMinIndex = i;
             for (int j = 0; j < archers.size() + 1; j++) {
-                // dit klop sws nog niet met de comparator
                 if (scoringScheme.compare(archers.get(j), archers.get(currentMinIndex)) < 0) {
-                    if (archers.get(j).getId() < archers.get(currentMinIndex).getId()) { // maakt het uit als het een random ID is?
+                    if (archers.get(j).getTotalScore() < archers.get(currentMinIndex).getTotalScore()) { // klopt dit?
                         currentMinIndex = j;
                     }
                 }
@@ -44,7 +43,7 @@ public class ChampionSelector {
      */
     public static List<Archer> quickSort(List<Archer> archers, Comparator<Archer> scoringScheme) {
 
-        archers = quickSortMethod(archers, 0, archers.size() -1);
+        archers = quickSortMethod(archers, 0, archers.size() -1); // comperator word nog niet gebruikt
 
         return archers;
     }
@@ -95,12 +94,8 @@ public class ChampionSelector {
 
         for (int j = low; j <= high - 1; j++) {
 
-            // If current element is smaller
-            // than the pivot
+            // If current element is smaller than the pivot
             if (arr[j] < pivot) {
-
-                // Increment index of
-                // smaller element
                 i++;
                 swap(arr, i, j);
             }
