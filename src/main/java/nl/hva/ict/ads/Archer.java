@@ -1,5 +1,6 @@
 package nl.hva.ict.ads;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -74,6 +75,13 @@ public class Archer {
         for (int point : points) {
             totalScore = +point;
         }
+
+        int[][] supremePoints = new int[11][2];
+
+        for(int i = 0; i < 2; i++){
+            supremePoints[round][i] = points[i];
+        }
+        
     }
 
     public int getTotalScore() {
