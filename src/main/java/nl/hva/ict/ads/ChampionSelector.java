@@ -24,6 +24,11 @@ public class ChampionSelector {
                     if (archers.get(j).getTotalScore() < archers.get(currentMinIndex).getTotalScore()) { // klopt dit?
                         currentMinIndex = j;
                     }
+                    // add:
+                    // - biggest total score
+                    // - most 10s
+                    // - most 9s
+                    // - lowest ID
                 }
             }
 

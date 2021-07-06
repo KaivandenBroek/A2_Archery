@@ -1,6 +1,5 @@
 package nl.hva.ict.ads;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -13,10 +12,10 @@ import java.util.*;
  * constructor must be contained in a very clear manner in your report.
  */
 public class Archer {
-    public final static int MAX_ARROWS = 3;
-    public final static int MAX_ROUNDS = 10;
+    private final static int MAX_ARROWS = 3;
+    private final static int MAX_ROUNDS = 10;
     private final static Random randomizer = new Random();
-    private int id; // Once assigned a value this attribute is not allowed to change.
+    private final int id; // Once assigned a value this attribute is not allowed to change.
 
     private String firstName;
     private String lastName;
@@ -24,6 +23,7 @@ public class Archer {
     private static int tens;
     private static int nines;
     private int totalScore;
+    private int[][] pointsHolder = new int[11][2];
 
     private static int amountArchers = 0;
 
@@ -44,7 +44,7 @@ public class Archer {
     }
 
     private int generateId() {
-        int id = 135778 + amountArchers;
+        int id = 135788 + amountArchers;
         return id;
     }
 
@@ -72,16 +72,15 @@ public class Archer {
      * @param points the points shot during the round.
      */
     public void registerScoreForRound(int round, int[] points) {
+        // counting the total score for an archer
         for (int point : points) {
-            totalScore = +point;
+            totalScore = totalScore + point;
         }
 
-        int[][] supremePoints = new int[11][2];
-
+        // storing the scores
         for(int i = 0; i < 2; i++){
-            supremePoints[round][i] = points[i];
+            pointsHolder[round][i] = points[i];
         }
-        
     }
 
     public int getTotalScore() {
@@ -121,7 +120,7 @@ public class Archer {
 
     public static void toString(List<Archer> archers) {
         for (int i = 0; i < archers.size(); i++)
-            System.out.println(archers.get(i).id + " " + archers.get(i).getTotalScore() + " " + archers.get(i).firstName
+            System.out.println(archers.get(i).id + " (" + archers.get(i).getTotalScore() + ") " + archers.get(i).firstName
                     + " " + archers.get(i).lastName);
     }
 
